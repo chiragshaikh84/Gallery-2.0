@@ -1,0 +1,725 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f3f2ee;
+    color: #111;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =================================
+   TOP BAR
+================================= */
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: 55px;
+
+    border-bottom: 1px solid #111;
+    background: #f3f2ee;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 20px;
+
+    z-index: 1000;
+}
+
+.menu,
+.title,
+.year {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.year {
+    margin-left: auto;
+}
+
+
+/* =================================
+   MAIN LAYOUT
+================================= */
+
+.page {
+    display: grid;
+    grid-template-columns: 38% 62%;
+    margin-top: 55px;
+}
+
+
+/* =================================
+   LEFT PANEL
+================================= */
+
+.left-panel {
+    height: calc(100vh - 55px);
+
+    position: sticky;
+    top: 55px;
+
+    border-right: 1px solid #111;
+
+    background: #000;
+    color: #fff;
+}
+
+.left-content {
+    height: 100%;
+    padding: 45px;
+}
+
+.left-stage {
+    position: relative;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    overflow: visible;
+}
+
+
+/* =================================
+   HERO / TOPIC TRANSITIONS
+================================= */
+
+.hero-copy,
+.topic-copy {
+    position: absolute;
+    left: 0;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+.hero-copy {
+    top: 0;
+    transform: translateY(20px);
+}
+
+.topic-copy {
+    top: 50%;
+    transform: translateY(40px);
+}
+
+.hero-copy.active,
+.topic-copy.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.project-label {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+
+    margin-bottom: 35px;
+}
+
+h1 {
+    font-size: clamp(50px, 6vw, 90px);
+
+    line-height: .84;
+    letter-spacing: -4px;
+
+    font-weight: normal;
+
+    margin-bottom: 30px;
+}
+
+.intro {
+    font-size: 22px;
+    font-style: italic;
+
+    margin-bottom: 25px;
+}
+
+.artist {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+    line-height: 1.55;
+
+    letter-spacing: .4px;
+
+    max-width: 250px;
+}
+
+.scroll-indicator {
+    margin-top: 40px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+    letter-spacing: 1px;
+
+    color: #fff;
+}
+
+
+/* =================================
+   TOPIC
+================================= */
+
+.topic-copy {
+    display: flex;
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+}
+
+.topic-number {
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+    letter-spacing: 2px;
+
+    color: #888;
+}
+
+.topic-title {
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(28px, 3.5vw, 48px);
+
+    line-height: .92;
+
+    letter-spacing: -1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =================================
+   RIGHT PANEL
+================================= */
+
+.right-panel {
+    width: 100%;
+}
+
+
+/* =================================
+   INTRO
+================================= */
+
+.intro-spacer {
+    min-height: calc(100vh - 55px);
+    width: 100%;
+}
+
+
+/* =================================
+   STORY SECTIONS
+================================= */
+
+.content-section {
+    min-height: 100vh;
+
+    padding: 90px 7vw;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.content-inner {
+    width: 100%;
+    max-width: 850px;
+
+    margin: auto;
+}
+
+
+/* =================================
+   SECTION LABEL
+================================= */
+
+.section-label {
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+    letter-spacing: 1.5px;
+
+    margin-bottom: 35px;
+
+    color: #777;
+}
+
+
+/* =================================
+   TEXT
+================================= */
+
+.text-wrapper {
+    max-width: 680px;
+
+    transform:
+        translateY(35px)
+        scale(.97);
+
+    opacity: .25;
+
+    transition:
+        transform .45s ease,
+        opacity .45s ease;
+}
+
+.text-wrapper h2 {
+    font-family: Arial, sans-serif;
+
+    font-size: clamp(30px, 4vw, 54px);
+
+    font-weight: normal;
+
+    line-height: .95;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 45px;
+
+    text-transform: uppercase;
+}
+
+.text-wrapper p {
+    font-size: clamp(20px, 2vw, 29px);
+
+    line-height: 1.35;
+
+    margin-bottom: 30px;
+
+    transition:
+        opacity .3s ease,
+        transform .3s ease;
+}
+
+
+/* Active text */
+
+.content-section.active .text-wrapper {
+    transform:
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+
+/* =================================
+   IMAGE
+================================= */
+
+.image-wrapper {
+    width: 100%;
+    height: 70vh;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+    transform: scale(1);
+
+    will-change: transform;
+    transform-origin: center center;
+}
+
+
+
+/* =================================
+   IMAGE CAPTION
+================================= */
+
+.image-caption {
+    margin-top: 14px;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    color: #777;
+}
+
+
+/* =================================
+   IMAGE ZOOM ANIMATIONS
+================================= */
+
+@keyframes zoom1 {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2.3);
+    }
+}
+
+@keyframes zoom2 {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2.2);
+    }
+}
+
+@keyframes zoom3 {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2.6);
+    }
+}
+
+@keyframes zoom4 {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(2.9);
+    }
+}
+
+@keyframes zoom5 {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.5);
+    }
+}
+
+
+/* =================================
+   IMAGE ZOOM OUT
+================================= */
+
+@keyframes zoomOut1 {
+    from {
+        transform: scale(1.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut2 {
+    from {
+        transform: scale(2.2);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut3 {
+    from {
+        transform: scale(2.6);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut4 {
+    from {
+        transform: scale(2.9);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomOut5 {
+    from {
+        transform: scale(2.4);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
+/* =================================
+   ACTIVE IMAGE
+================================= */
+
+#section1-image.active img {
+    animation: zoom1 0.5s ease-out 0.5s forwards;
+}
+
+#section2-image.active img {
+    animation: zoom2 0.5s ease-out 0.5s forwards;
+}
+
+#section3-image.active img {
+    animation: zoom3 0.5s ease-out 0.5s forwards;
+}
+
+#section4-image.active img {
+    animation: zoom4 0.5s ease-out 0.5s forwards;
+}
+
+#section5-image.active img {
+    animation: zoom5 0.5s ease-out 0.5s forwards;
+}
+
+
+/* =================================
+   ZOOM OUT
+================================= */
+
+#section1-image.zooming-out img {
+    animation: zoomOut1 0.5s ease-out forwards;
+}
+
+#section2-image.zooming-out img {
+    animation: zoomOut2 0.5s ease-out forwards;
+}
+
+#section3-image.zooming-out img {
+    animation: zoomOut3 0.5s ease-out forwards;
+}
+
+#section4-image.zooming-out img {
+    animation: zoomOut4 0.5s ease-out forwards;
+}
+
+#section5-image.zooming-out img {
+    animation: zoomOut5 0.5s ease-out forwards;
+}
+
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 800px) {
+    /* Fullscreen intro mode on mobile */
+    .page.intro-mode .left-panel {
+        position: fixed;
+        top: 55px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 55px);
+        max-height: none;
+        z-index: 1000;
+        border-bottom: none;
+        transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+    }
+
+    .page.intro-mode .left-content {
+        padding: 40px 25px;
+        transition: padding 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .page.intro-mode .hero-copy {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s;
+    }
+
+    /* Once intro mode is removed, the left-panel goes back to sticky */
+    .page:not(.intro-mode) .left-panel {
+        height: 28vh;
+        min-height: 180px;
+        max-height: 250px;
+        transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .page:not(.intro-mode) .left-content {
+        padding: 25px;
+        transition: padding 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .page:not(.intro-mode) .hero-copy {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .page:not(.intro-mode) .topic-copy.active {
+        opacity: 1;
+        transform: translateY(0);
+        transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    }
+
+    .page {
+        display: block;
+        margin-top: 40px;
+    }
+
+    .left-panel {
+        position: sticky;
+        top: 40px;
+        width: 100%;
+        height: 28vh;
+        min-height: 180px;
+        max-height: 250px;
+        background: #000;
+        color: #fff;
+        border-right: none;
+        border-bottom: 1px solid #fff;
+        z-index: 900;
+    }
+
+    .left-content {
+        width: 100%;
+        height: 100%;
+        padding: 25px;
+    }
+
+    .left-stage {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .title {
+        display: none;
+    }
+
+    .year {
+        font-size: 9px;
+    }
+
+    h1 {
+        font-size: clamp(40px, 11vw, 58px);
+        line-height: .86;
+        letter-spacing: -3px;
+        margin-bottom: 15px;
+    }
+
+    .project-label {
+        font-size: 9px;
+        margin-bottom: 18px;
+    }
+
+    .intro {
+        font-size: 17px;
+        margin-bottom: 12px;
+    }
+
+    .artist {
+        font-size: 9px;
+        line-height: 1.4;
+    }
+
+    .scroll-indicator {
+        display: block;
+        margin-top: 30px;
+        font-size: 8px;
+        opacity: 0.7;
+    }
+
+    .topic-copy {
+        top: 15%;
+        gap: 7px;
+    }
+
+    .topic-title {
+        font-size: clamp(28px, 9vw, 40px);
+    }
+
+    .intro-spacer {
+        display: none;
+    }
+
+    .content-section {
+        min-height: calc(100vh - 55px);
+        padding: 80px 25px;
+        scroll-margin-top: 34vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding-top: calc(28vh + 40px);
+    }
+
+    .content-inner {
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .image-wrapper {
+        height: 50vh;
+    }
+
+    .text-wrapper p {
+        font-size: 21px;
+        line-height: 1.4;
+    }
+
+    .hero-copy {
+        top: -15px;
+    }
+}
